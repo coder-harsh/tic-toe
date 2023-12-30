@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow:wght@400&display=swap">
+    <!-- fott awesome -->
+    <script src="https://kit.fontawesome.com/721abd87bb.js" crossorigin="anonymous"></script>
+    <!-- fott awesome -->
     <style>
         body {
             font-family: 'Rubik Doodle Shadow', sans-serif;
@@ -14,8 +17,9 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #000;
-            color: white;
+            /* background-color: #000; */
+            background: rgb(230, 192, 255);
+            background: radial-gradient(circle, rgba(230, 192, 255, 1) 0%, rgba(148, 187, 233, 1) 100%);
         }
 
         #game {
@@ -27,26 +31,35 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 10px;
-            margin-bottom: 20px;
-            background: none;
-            padding: 15px;
+            margin-bottom: 15px;
+            /* background: none; */
+            padding: 30px;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(89.7px);
+            -webkit-backdrop-filter: blur(16.7px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .cell {
-            width: 150px;
-            height: 150px;
+            width: auto;
+            height: 100px;
             background-color: rgba(255, 255, 255, 0.1);
-            border: 1px solid #555;
+            border: 2px solid rgba(20, 19, 19, 0.3);
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 100px;
+            font-size: 70px;
             cursor: pointer;
-            color: white;
+            /* color: white; */
+            color: black;
             border-radius: 8px;
             transition: background-color 0.3s ease;
+            box-shadow: 1px 1px 6px #ffffff,
+                3px 3px 3px #7b7b7b;
+
         }
 
         .cell:hover {
@@ -54,8 +67,8 @@
         }
 
         #status {
-            margin-bottom: 20px;
-            font-size: 37px;
+            margin-bottom: 7px;
+            font-size: 30px;
         }
 
         .winning-cell {
@@ -101,11 +114,13 @@
             display: flex;
             justify-content: space-between;
             font-size: 20px;
-            margin-bottom: 20px;
+            margin-top: 20px;
+            margin-bottom: 7px;
         }
 
         #resetScoreButton {
-            background: linear-gradient(to bottom, purple, purple, purple), rgba(0, 128, 0, 0.8);
+            /* background: linear-gradient(to bottom, purple, purple, purple), rgba(0, 128, 0, 0.8); */
+            background-color: red;
             border: none;
             padding: 8px 15px;
             color: white;
@@ -125,19 +140,24 @@
 
         #restartButton,
         #friendModeButton {
-            background: linear-gradient(to bottom, purple, purple, purple), rgba(0, 128, 0, 0.8);
+            /* background: linear-gradient(to bottom, purple, purple, purple), rgba(0, 128, 0, 0.8); */
+            background-color: green;
             border: none;
             color: white;
-            padding: 15px 15px;
+            padding: 12px 15px;
             text-align: center;
             text-decoration: none;
             font-size: 19px;
             margin: 4px 4px;
             cursor: pointer;
             border-radius: 8px;
-            margin-right: 0px;
-            margin-top: 8px;
+            margin-right: 5px;
+            margin-top: 2px;
             transition: background-color 0.3s ease;
+        }
+
+        #friendModeButton {
+            background-color: #4c4ed0;
         }
 
         #restartButton:hover,
@@ -155,7 +175,7 @@
             </center>
             <div id="playerOScore">Player O: 0</div>
             <div id="drawScore">Draws: 0</div>
-            <button id="resetScoreButton">Reset Scores</button>
+            <button id="resetScoreButton"> <i class="fa-solid fa-power-off"></i> Reset Scores</button>
         </div>
         <div id="status">Friend Mode | X's turn</div>
         <div id="board">
@@ -169,12 +189,12 @@
             <div class="cell" data-cell-index="7"></div>
             <div class="cell" data-cell-index="8"></div>
         </div>
-        <button id="friendModeButton">Friend Mode</button>
-        <button id="restartButton">Restart Game</button>
+        <button id="friendModeButton"><i class="fa-solid fa-user-group"></i> Friend Mode</button>
+        <button id="restartButton"><i class="fa-solid fa-rotate-right"></i> Restart Game</button>
     </div>
 
     <!-- <audio id="winSound" src="https://jmp.sh/s/hdoP89VqgbIi6pbTMo8A"></audio> -->
-    <audio id="winSound" src="audio-won.mp3"></audio>
+    <audio id="winSound" src="audio/audio-won.mp3"></audio>
     <script>
         const cells = document.querySelectorAll('.cell');
         const statusText = document.getElementById('status');
